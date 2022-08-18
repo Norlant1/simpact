@@ -19,14 +19,22 @@ const playbutton = document.querySelector(".button1");
 const buttondiv = document.querySelector(".button_div");
 const game_over = document.querySelector(".gameover");
 const tryagain = document.querySelector("#tryagain");
+const home = document.querySelector("#home"); 
 
 let game_end = false;
 let running = false;
 let ui_anim;
 let main_game;
+let start_animation;
+
+
+export let controller = new AbortController();
+
+
 
 playbutton.addEventListener("click",()=> {
   if(!running){
+  
     running = true;   
     buttondiv.style.display = "none";
     gamestart();
@@ -34,10 +42,7 @@ playbutton.addEventListener("click",()=> {
 
 });
 
-tryagain.addEventListener("click",()=> {
-   
-   cancelAnimationFrame(main_game);
-});
+
 
 
 let explosion_sprites = await loader(10,"Explosion","Explosion");
@@ -80,8 +85,8 @@ new InputHandler(player);
 function ui_animation() {
 
   if(player.arrayofhealths.length === 0 && !game_end){
-
-   setTimeout(()=>{game_end = true;
+    game_end = true;
+   setTimeout(()=>{
     game_over.style.display = "flex";},1000);
     
   }
@@ -118,6 +123,39 @@ function gamestart() {
  
   
  
+}
+
+tryagain.addEventListener("click",()=> {
+ 
+  
+
+
+  reset();
+  gamestart();
+
+});
+
+home.addEventListener("click",()=> {
+  
+  buttondiv.style.display = "flex";
+  running = false;
+  reset();
+
+  
+});
+
+
+
+function reset(){
+  controller.abort();
+  game_over.style.display = "none";
+  player.alive = true;
+  game_end = false; 
+  cancelAnimationFrame(main_game);
+  player.arrayofhealths = [player.health,player.health,player.health];
+  arrayofenemies.length = 0;
+  player.jetpos_x = 10;
+  player.jetpos_y = 100;
 }
 
 

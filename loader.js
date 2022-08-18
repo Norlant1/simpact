@@ -1,4 +1,4 @@
-import {Enemy,enemy_sprites,boss_sprites,player} from "/simpact/main.js"
+import {Enemy,enemy_sprites,boss_sprites,player,controller} from "/simpact/main.js"
 
 
 
@@ -48,6 +48,10 @@ export function loader(numberofsprites,spritename,image_name) {
 
  // spawner
 
+
+
+
+
  
 const spawnsize = 25;
 const bosssize = 200; 
@@ -55,15 +59,19 @@ const bosssize = 200;
  function spawner(enemy,speedx,speedy,posx,posy,interval,spawn_sprites,size){
   return new Promise((resolve,reject)=> {
     
+   
+    controller.signal.addEventListener("abort",()=>{reject(), console.log("aborted")});
+    
+
     if(player.arrayofhealths.length > 0){
       setTimeout(()=>{resolve(enemy.addenemy(speedx,speedy,posx,posy,spawn_sprites,size))},interval);
     }
     else{
-     
-        reject();
-      
-      
+      reject();
     }
+   
+      
+    
   });
 
 }
@@ -72,22 +80,22 @@ export async function execute_respawn(){
  
 try {
     
-  await spawner(Enemy,-1,0,420,20,2000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,20,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,20,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,250,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,250,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,250,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,150,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,150,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,150,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,200,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,200,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0,420,200,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,2,420,20,2000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,2,420,20,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,2,420,20,1000,enemy_sprites,spawnsize);
-  await spawner(Enemy,-1,0.2,420,20,3000,boss_sprites,bosssize);
+  await spawner(Enemy,-1,0,450,20,2000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,20,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,20,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,250,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,250,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,250,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,150,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,150,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,150,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,200,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,200,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0,450,200,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,2,450,20,2000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,2,450,20,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,2,450,20,1000,enemy_sprites,spawnsize);
+  await spawner(Enemy,-1,0.2,450,20,3000,boss_sprites,bosssize);
 }
 
 catch(error){
