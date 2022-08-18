@@ -1,0 +1,109 @@
+
+    body{
+      background-color: rgb(13, 27, 41);
+    
+    }
+
+   
+
+    .main_canvas {
+      border-style: solid;
+      border-width: 1px;
+      background-color: rgb(14, 32, 56);
+      z-index: 1;
+      border-color: rgb(163, 168, 172);
+      border-radius: 20px;
+      border-width: 4px;
+    
+      
+      
+    }
+
+    .maindiv {
+       position: relative;
+       width: 500px;
+    }
+
+    #btn {
+      background-color: rgb(8, 27, 44);
+      padding: 10px 30px 10px 30px;
+      border-radius: 20px;
+      position: absolute;
+      border-style: none;
+      font-size: 1em;
+      z-index: 3;
+      cursor: pointer;
+      color: rgb(255, 255, 255);
+      font-family: 'DynaPuff', cursive;
+      box-shadow: 0px 1.5px 1px rgba(0, 0, 0, 0.5);
+      
+    }
+
+    #btn:active{
+      box-shadow: 0px -0.5px 1px rgba(0, 0, 0, 0.5);
+    }
+
+    .button1{
+      top: 90px;
+      left: 200px;
+    }
+    .button2{
+      top: 140px;
+      left: 185px;
+      
+    }
+    .button3{
+      top: 190px;
+      left: 195px;
+    }
+
+    .playbutton:active {
+      color: rgb(50, 102, 50);
+    }
+
+    .ui_background {
+     position: absolute;
+     z-index: 2;
+     top: 0;
+
+
+    }
+
+    .gameover {
+      position: absolute;
+      top: 90px;
+      left: 120px;
+      display: none;
+      flex-direction: row;
+      column-gap: 10px;
+      z-index: 1000;
+      background-color: rgb(8, 29, 46);
+      width: 50%;
+      height: 40%;
+      border-radius: 20px;
+      justify-content: center;
+      align-items: center;
+      border-style: solid;
+      border-color: rgb(7, 30, 54);
+      border-width: 3px;
+      transition: all ease-in-out 0.5s;
+   
+    
+  
+    }
+
+   .gm-button {
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    font-family: 'DynaPuff', cursive;
+    color: rgb(255, 255, 255);
+    background-color: rgb(12, 36, 56);
+    border-style: none;
+    box-shadow: 0px 1.5px 1px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+   }
+
+   .gm-button:active{
+    box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5);
+  }
+   
